@@ -14,15 +14,15 @@ struct AABB {
 
   bool containsPoint(Item* item) {
     XY p(item->x, item->y);
-    return ((p.x > center.x - halfDimension.x || p.x < center.x + halfDimension.x) &&
-            (p.y > center.y - halfDimension.y || p.y < center.y + halfDimension.y));
+    return ((p.x > center.x - halfDimension.x && p.x <= center.x + halfDimension.x) &&
+            (p.y > center.y - halfDimension.y && p.y <= center.y + halfDimension.y));
   }
 
   bool intersectsAABB(AABB other) {
-    return !(center.x - halfDimension.x > other.center.x + other.halfDimension.x ||
-             center.x + halfDimension.x < other.center.x - other.halfDimension.x ||
-             center.y - halfDimension.y < other.center.y + other.halfDimension.y ||
-             center.y + halfDimension.y > other.center.y - other.halfDimension.y);
+    return (((other.center.x - other.halfDimension.x > center.x - halfDimension.x && other.center.x - other.halfDimension.x < center.x + halfDimension.x) ||
+             (other.center.x + other.halfDimension.x > center.x - halfDimension.x && other.center.x + other.halfDimension.x < center.x + halfDimension.x)) &&
+            ((other.center.y - other.halfDimension.y > center.y - halfDimension.y && other.center.y - other.halfDimension.y < center.y + halfDimension.y) ||
+             (other.center.y + other.halfDimension.y > center.y - halfDimension.y && other.center.y + other.halfDimension.y < center.y + halfDimension.y)));
   }
 
   XY center;
@@ -37,7 +37,7 @@ class Quadtree {
   void subdivide();
   void queryRange(std::vector<Item*> &, AABB);
 
-  void runThrought();
+  void runThrough();
   void clear();
   bool getCollision(std::vector<Item*>);
 
@@ -45,7 +45,6 @@ class Quadtree {
   int nodeCapacity;
 
   // leaves
-  Quadtree * parent;
   Quadtree * NW;
   Quadtree * NE;
   Quadtree * SW;
