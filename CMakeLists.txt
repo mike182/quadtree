@@ -15,6 +15,9 @@ set (SOURCES
   main.cpp
   Core.cpp
   Circle.cpp
+  Quadtree.cpp
+  Object.cpp
+
   )
 
 set(EXECUTABLE_NAME a.out)
