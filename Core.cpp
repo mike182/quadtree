@@ -19,7 +19,8 @@ void Core::Start() {
     while (true) {
       if (window.pollEvent(event)) {
         if (event.type == sf::Event::Closed) window.close(), exit(1);
-        if ((event.type == sf::Event::KeyPressed) && (event.key.code == sf::Keyboard::Escape)) window.close(), exit(1);
+        if ((event.type == sf::Event::KeyPressed) && 
+            (event.key.code == sf::Keyboard::Escape)) window.close(), exit(1);
       }
       Update();
       window.display();
@@ -27,15 +28,18 @@ void Core::Start() {
   }
 }
 
+int Core::GetRandomColor(int max) {
+  return rand() % max + 1;
+}
+
 void Core::Update() {
-  window.clear(sf::Color(128, 128, 128));
+  window.clear(sf::Color(70, 70, 70));
   for (int i = 0; i < _items.size(); ++i) 
-    _items[i]->drawable.setFillColor(sf::Color(0, 171, 111, 0));
+    _items[i]->drawable.setFillColor(sf::Color(0, 0, 0, 0));
   for (int i = 0 ; i < _items.size(); ++i) {
     _items[i]->Move();
     for (int j = i; j < _items.size(); ++j) {
       if (i != j && checkForCollision(_items[i], _items[j])) {
-        /* std::cout << "COL" << std::endl; */
         _items[i]->drawable.setFillColor(sf::Color(0, 171, 111, 100));
         _items[j]->drawable.setFillColor(sf::Color(0, 171, 111, 100));
       }

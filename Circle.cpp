@@ -6,7 +6,7 @@ Circle::Circle(float _x, float _y, float _radius)
 
   // RANDOM DIRECTION  INITIALISATION FOR BOUNCEING ENMMIES
   int dice;
-  d.up = d.down = d.left = d.right = speed = 0;
+  d.up = d.down = d.left = d.right = 0;
 
   // y dir
   dice = rand() % 100 + 1;
@@ -14,10 +14,6 @@ Circle::Circle(float _x, float _y, float _radius)
   // x dir
   dice = rand() % 100 + 1;
   (dice < 50 ? d.left = 1 : d.right = 1);
-  // speed
-  speed = genRandomFloat(1.0, 10.0);
-#define COUT(x) std::cout << x << std::endl;
-  COUT(speed);
 
   drawable.setOrigin(radius, radius);
   drawable.setPosition(x, y);
@@ -41,5 +37,11 @@ float Circle::genRandomFloat(float min, float max) {
   return (rand() % (static_cast<int>(max) * 100) + min) / 100.0;
 }
 
-void SetColor(sf::Color) {
+void Circle::SetColor(sf::Color) {
+}
+
+void Circle::SetPosition(float a, float b) {
+  x = a;
+  y = b;
+  drawable.setPosition(x, y);
 }

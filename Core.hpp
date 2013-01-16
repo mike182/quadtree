@@ -13,6 +13,7 @@ class Core {
 
   void Start();
   void Update();
+  int GetRandomColor(int);
   bool checkForCollision(Circle *a, Circle *b);
 
   std::vector<Circle *> _items;
