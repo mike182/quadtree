@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
-#include "Circle.hpp"
+#include "Item.hpp"
 
-Circle::Circle(float _x, float _y, float _radius)
+Item::Item(float _x, float _y, float _radius)
 : x(_x), y(_y), radius(_radius), col(false) {
 
   // RANDOM DIRECTION  INITIALISATION FOR BOUNCEING ENMMIES
@@ -23,7 +23,7 @@ Circle::Circle(float _x, float _y, float _radius)
   drawable.setOutlineThickness(2);
 }
 
-void Circle::Move() {
+void Item::Move() {
   // BOUNCING BALLS
   if (x - radius <= 0) { d.right = 1, d.left = 0; d.toMove(this); }
   if (x + radius>= 800) { d.left = 1, d.right = 0; d.toMove(this); }
@@ -33,14 +33,14 @@ void Circle::Move() {
   d.toMove(this);
 }
 
-float Circle::genRandomFloat(float min, float max) {
+float Item::genRandomFloat(float min, float max) {
   return (rand() % (static_cast<int>(max) * 100) + min) / 100.0;
 }
 
-void Circle::SetColor(sf::Color) {
+void Item::SetColor(sf::Color) {
 }
 
-void Circle::SetPosition(float a, float b) {
+void Item::SetPosition(float a, float b) {
   x = a;
   y = b;
   drawable.setPosition(x, y);

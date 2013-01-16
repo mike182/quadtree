@@ -3,6 +3,7 @@
 #include "Core.hpp"
 
 /* sf::Window window(sf::VideoMode(800, 600), "My window"); */
+#include <vector>
 
 int main()
 {

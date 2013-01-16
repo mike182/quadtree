@@ -14,7 +14,8 @@ set (CMAKE_CXX_COMPILER clang++)
 set (SOURCES
   main.cpp
   Core.cpp
-  Circle.cpp
+  Item.cpp
+  Quadtree.cpp
   )
 
 set(EXECUTABLE_NAME a.out)

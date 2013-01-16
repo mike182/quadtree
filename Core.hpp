@@ -4,7 +4,8 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 
-#include "Circle.hpp"
+#include "Quadtree.hpp"
+#include "Item.hpp"
 
 class Core {
  public:
@@ -14,10 +15,11 @@ class Core {
   void Start();
   void Update();
   int GetRandomColor(int);
-  bool checkForCollision(Circle *a, Circle *b);
+  bool checkForCollision(Item *a, Item *b);
 
-  std::vector<Circle *> _items;
+  std::vector<Item *> _items;
   sf::RenderWindow window;
+  Quadtree * qtree;
 };
 
 #endif // __CORE__
