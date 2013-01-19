@@ -15,6 +15,7 @@ Item::Item(float _x, float _y, float _radius)
   dice = rand() % 100 + 1;
   (dice < 50 ? d.left = 1 : d.right = 1);
 
+  // init sfml item
   drawable.setOrigin(radius, radius);
   drawable.setPosition(x, y);
   drawable.setRadius(radius);

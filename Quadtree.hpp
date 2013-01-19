@@ -5,7 +5,6 @@
 
 struct XY {
   XY(float _x, float _y) : x(_x), y(_y) {}
-
   float x, y;
 };
 
@@ -32,12 +31,12 @@ struct AABB {
 class Quadtree {
  public:
   Quadtree(XY, XY);
+  Quadtree(XY, XY, int);
 
   bool insert(Item *);
   void subdivide();
   void queryRange(std::vector<Item*> &, AABB);
 
-  void runThrough();
   void clear();
   bool getCollision(std::vector<Item*>);
 

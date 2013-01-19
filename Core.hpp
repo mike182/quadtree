@@ -9,17 +9,18 @@
 
 class Core {
  public:
-  Core();
   Core(int);
 
   void Start();
   void Update();
-  int GetRandomColor(int);
-  bool checkForCollision(Item *a, Item *b);
 
-  std::vector<Item *> _items;
+  int Random(int max) {
+    return rand() % max + 1;
+  }
+
   sf::RenderWindow window;
   Quadtree * qtree;
+  std::vector<Item *> _items;
 };
 
 #endif // __CORE__

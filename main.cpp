@@ -9,7 +9,7 @@ int main()
 {
   srand(time(NULL));
 
-  Core core(1000);
+  Core core(20);
   core.Start();
 
   return 0;

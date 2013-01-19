@@ -12,9 +12,18 @@ class Item {
   Item() {}
   Item(float, float, float);
   void Move();
+  bool checkForCollision(Item * other) {
+    float AB = sqrt(pow(other->x - x, 2) + pow(other->y - y, 2));
+    return AB - (radius + other->radius) < 0;
+  }
+  bool checkForCollision(Item * a, Item * b) {
+    float AB = sqrt(pow(b->x - a->x, 2) + pow(b->y - a->y, 2));
+    return AB - (a->radius + b->radius) < 0;
+  }
   void SetColor(sf::Color);
   void SetPosition(float, float);
   float genRandomFloat(float, float);
+
 
   float x, y, radius;
   bool col;
